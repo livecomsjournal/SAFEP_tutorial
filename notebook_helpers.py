@@ -285,7 +285,7 @@ class TIData(DeltaGData):
             first_line = fin.readline()
         columns = re.split(" +", first_line)[1:-1]
         self.data = pd.read_csv(
-            infile, delim_whitespace=True, names=columns, comment="#", index_col=0
+            infile, sep="\\s+", names=columns, comment="#", index_col=0
         )
         self.data = self.data[self.data.index >= self.eqtime][1:]
         self.data.index = self.data.index - self.eqtime
